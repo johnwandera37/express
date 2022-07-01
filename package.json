@@ -2,7 +2,7 @@
   "name": "nodehello",
   "version": "1.0.0",
   "description": "",
-  "main": "serve.js",
+  "main": "server.js",
   "scripts": {
     "start": "node server",
     "dev": "nodemon server"
@@ -13,6 +13,7 @@
     "nodemon": "^2.0.18"
   },
   "dependencies": {
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "mongoose": "^6.4.1"
   }
 }

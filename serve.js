@@ -1,7 +1,15 @@
+// const http = require('http');
+// const port = 3001;
+
+// const server = http.createServer((req, res)=>{
+//     res.end('Hello world');
+// })
+// server.listen(port, ()=>{console.log(`server running on port ${port}`)})
+
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
-const port = 3001;
+const port = 3500;
 
 const server = http.createServer((req, res)=>{
     console.log(req.url, req.method);
