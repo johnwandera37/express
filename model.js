@@ -2,31 +2,13 @@ const mongoose = require('mongoose');
 
 //Database schema
 const userCredentialSchema = new mongoose.Schema({
-    firstname: {
-        type: String,
-        required: true
-    },
-    lastname: {
-        type: String,
-        required: true
-    },
-    email:{
-        type: String,
-        required: true
-    },
-    Age: {
-        type: Number,
-        default: 0
-    },
-    Phone: {
-        type: Number,
-    },
-    DateOfBirth: {
-        type: Date
-    },
-    Gender:{
-        type: String
-    }
+    firstname: String,
+    lastname: String,
+    email: String,
+    Age: Number,
+    Phone: Number,
+    DateOfBirth: Date,
+    Gender: String
 });
 
-module.exports = mongoose.model('User', userCredentialSchema);
+module.exports = mongoose.model('Users', userCredentialSchema);

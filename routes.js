@@ -1,31 +1,30 @@
-const { Router } = require('express');
 const express = require('express');
-const app = express();
+const router = express.Router();
 const userModel = require('./model')//exporting schema
-app.use(Router);
 
-    // post route to create user 
-    app.post('/createUser', async (req, res)=>{
-        const user = new userModel(req.body); //contents from schema
-        try {
-            await new user.save(); //saving user to database
-            res.send(user); //giving a response of the saved user
-            res.statusCode(201) //success
-        } catch (error) {
-            res.status(400).send(error); //bad request and error sent
-        }
-    });
+ //creating get route
+ router.get('/allUsers', async (req, res)=>{
+    const users = await userModel.find() //retrieve users created
+    try {
+        res.send({data: users})//sending them to database
+        res.status(201)//success
+    } catch (error) {
+        res.status(400).send(error) //bad request
+    }
+   
+ })
 
-    //get route to retrieve all users created
-    app.get('/allUsers', async (req, res)=>{
-        const users = new userModel.find({}); //retrieving users created
-        try {
-            res.send(users);
-            res.statusCode(201)//success
-            
-        } catch (error) {
-            res.status(400).send(error);
-        }
-    })
+ //creating post route to retrieve users
+ router.get('/createUser', async (req, res)=>{
+    const user = new userModel(req.body);
+    try {
+        await user.save(); //saving user and send to database
+        res.send(user);
+        res.status(201); //success
+        
+    } catch (error) {
+        res.status(400).send(error); //bad request
+    }
+ })
 
-    module.exports = app; //exporting get and post
+    module.exports = router; //exporting get and post
