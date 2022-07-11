@@ -17,12 +17,12 @@ const connectMongo = async ()=>{
     
         console.log('server connected');
 
-        app.get('/', (req, res)=>{
+        app.get('/', (req, res)=>{ //displaying hello world in browser
             res.send('hello world')
         })
     
         app.use(express.json()); //for json content
-        app.use('/', router) // routes imported
+        app.use('/', router) // routes imported also accessing routes from root, e.g 3500/allUsers
        
     })
         
